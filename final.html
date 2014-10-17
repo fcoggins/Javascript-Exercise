@@ -1,0 +1,167 @@
+<html>
+<head>
+	<title>Javascript II</title>
+	<style>
+	div
+	{
+		border: 1px solid black;
+		padding: 10px;
+		margin:10px;
+	}
+	#text-box-color
+	{
+		background-color: green;
+	}
+	#awesome-box
+	{
+		text-align: center;
+		font-family: sans-serif;
+		font-size: 72px;
+		position: relative;
+		left:0px;
+		-webkit-transition: left 0.3s 0.1s ease-out;
+	}
+	.hidden
+	{
+		display: none;
+	}
+
+	.moving {
+		-webkit-animation-name: myfirst;
+	    -webkit-animation-duration: 5s;
+	    -webkit-animation-timing-function: linear;
+	    -webkit-animation-delay: 2s;
+	    -webkit-animation-iteration-count: infinite;
+	    -webkit-animation-direction: alternate;
+	    -webkit-animation-play-state: running;
+	}
+
+	@-webkit-keyframes myfirst {
+	    0%   {background:red; left:0px; top:0px;}
+	    25%  {background:yellow; left:200px; top:0px;}
+	    50%  {background:blue; left:200px; top:200px;}
+	    75%  {background:green; left:0px; top:200px;}
+	    100% {background:red; left:0px; top:0px;}
+	}
+	</style>
+</head>
+<body>
+	
+
+	<div id="text-box-replace">
+		hello<br />
+		<a href="text-page" id="get-text">Show me the new text!</a><br />
+		<!--
+		Add an event listener and attach it to the "get-text" id.
+		When the link is clicked:
+			Prevent the default action
+			Change the content of the "text-box-replace" div to "world"
+		-->
+	</div>
+
+	<script>
+		var element = document.getElementById("get-text");
+		element.addEventListener('click', function(e){
+
+			var text = document.getElementById("text-box-replace");
+			text.innerHTML = "world"
+			e.preventDefault();
+		
+		});
+	</script>
+
+	
+
+	<div id="text-box-color">
+		I am the color green!<br />
+		<a href="#" id="get-color">Show me the new color!</a><br />
+		<!--
+		Add an event listener and attach it to the "get-color" id.
+		When the link is clicked:
+			Prevent the default action
+			Change the background color of the "text-box-color" div to red
+			Change the content of the "text-box-color" div to "I am the color red!"
+		-->
+	</div>
+
+	<script>
+		var color_change = document.getElementById("get-color");
+
+		color_change.addEventListener('click', function(e){
+			
+			var textBoxColor = document.getElementById("text-box-color");
+			textBoxColor.style.backgroundColor = "red";
+			textBoxColor.innerHTML = "I am the color red!";
+			e.preventDefault();
+		
+		});
+	</script>
+
+	<div id="melon-box">
+		<img src="http://mda.bigoven.com/pics/rs/256/melon-with-chile-salt-and-lime-3.jpg" /><br />
+		<a href="#" id="get-melon">Show me the new melon!</a><br />
+		<!--
+		Add an event listener and attach it to the "get-melon" id.
+		When the link is clicked:
+			Prevent the default action
+			Change the content of the "melon" div to an image of a new melon
+		-->
+	</div>
+
+	<script>
+		var new_melon = document.getElementById("get-melon");
+
+		new_melon.addEventListener('click', function(e){
+			
+			var melonBox = document.getElementById("melon-box");
+			melonBox.innerHTML = "<img src='http://www.gudangkesehatan.com/wp-content/uploads/2014/08/buah-melon.jpg' width='500px'/>";
+			e.preventDefault();
+		
+		});
+	</script>
+
+	<hr />
+
+	<a href="#" id="be-awesome">Be Awesome!</a><br />
+	<!--
+	The "awesome-box" div below is hidden using a CSS class called "hidden"
+	Add an event listener and attach it to the "be-awesome" id.
+	When the link is clicked:
+		Prevent the default action
+		Remove the "hidden" class using the toggle function for elem.classList
+
+	Extra Credit 1:
+		Using setTimeout or setInterval, cause the "awesome-box" to toggle its visability once a second
+
+	Extra Credit 2:
+		Using setTimeout or setInterval, cause the "awesome-box" to move across the screen from left to right
+
+	Extra Credit 3:
+		If you complete Extra Credit 2, cause the "awesome-box" to bounce back and forth across the screen
+	-->
+
+	<span id="awesome-box" class="hidden">AWESOME</span>
+
+	<script>
+		var hidden_div = document.getElementById("be-awesome");
+
+		hidden_div.addEventListener('click', function(e){
+			
+			var awesomeBox = document.getElementById("awesome-box");
+			awesomeBox.classList.remove('hidden');
+			e.preventDefault();
+			awesomeBox.classList.add('moving');
+
+
+/*
+			setInterval(function(e){ 
+				awesomeBox.classList.toggle('hidden');
+			}, 1000)
+*/
+		
+		});
+
+
+	</script>
+</body>
+</html>
